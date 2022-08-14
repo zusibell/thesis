@@ -1,5 +1,6 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { ModuleFederationPlugin } = require('webpack').container;
+const ExternalTemplateRemotesPlugin = require("external-remotes-plugin");
 const path = require('path');
 
 module.exports = {
@@ -37,11 +38,18 @@ module.exports = {
     new ModuleFederationPlugin({
       name: 'cart',
       filename: 'remoteEntry.js',
+      remotes: {
+        utilities: "utilities@[utilitiesUrl]/remoteEntry.js",
+      },
       exposes: {
         './App': './src/App',
       },
-      shared: { react: { singleton: true }, 'react-dom': { singleton: true } },
+      shared: { 
+        react: { singleton: true }, 
+        'react-dom': { singleton: true },
+      },
     }),
+    new ExternalTemplateRemotesPlugin(),
     new HtmlWebpackPlugin({
       template: './public/index.html',
     }),

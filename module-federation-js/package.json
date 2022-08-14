@@ -4,7 +4,8 @@
   "workspaces": {
     "packages": [
       "home",
-      "cart"
+      "cart",
+      "utilities"
     ]
   },
   "scripts": {

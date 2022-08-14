@@ -30,8 +30,12 @@ module.exports = {
       name: "home",
       remotes: {
         cart: "cart@[cartUrl]/remoteEntry.js",
+        utilities: "utilities@[utilitiesUrl]/remoteEntry.js",
       },
-      shared: {react: {singleton: true}, "react-dom": {singleton: true}},
+      shared: {
+        react: {singleton: true}, 
+        "react-dom": {singleton: true},
+      },
     }),
     new ExternalTemplateRemotesPlugin(),
     new HtmlWebpackPlugin({

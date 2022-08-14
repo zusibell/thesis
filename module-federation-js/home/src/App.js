@@ -1,8 +1,8 @@
 import React, { Suspense } from 'react';
 const RemoteApp = React.lazy(() => import('cart/App'));
+import 'utilities/baseStyles';
 
 const App = () => {
-  let cart = "http://localhost:3002"
   return (
     <div
       style={{
